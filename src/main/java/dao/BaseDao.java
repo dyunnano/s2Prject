@@ -19,42 +19,42 @@ public class BaseDao {
     private static String password;//密码
 
     static{
-        //init();//静态态块中调用静态方法，完成对静态属性的初始化
+        init();//静态态块中调用静态方法，完成对静态属性的初始化
     }
 
     /**
      * 获取连接对象
      * @return
      */
-//    public Connection getConnection(){
-//        Connection conn=null;
-//        try {
-//            Class.forName(driver);
-//            conn= DriverManager.getConnection(url,user,password);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//        return conn;
-//    }
-
-
-    public Connection getConnection()
-    {
+    public Connection getConnection(){
         Connection conn=null;
-
         try {
-            Context context=new InitialContext();
-            DataSource data=(DataSource) context.lookup("java:comp/env/jdbc/microblog");
-            conn=data.getConnection();
-        } catch (NamingException e) {
+            Class.forName(driver);
+            conn= DriverManager.getConnection(url,user,password);
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return conn;
     }
+
+
+//    public Connection getConnection()
+//    {
+//        Connection conn=null;
+
+//        try {
+//            Context context=new InitialContext();
+//            DataSource data=(DataSource) context.lookup("java:comp/env/jdbc/microblog");
+//            conn=data.getConnection();
+//        } catch (NamingException e) {
+//            e.printStackTrace();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//        return conn;
+//    }
     /**
      *统一关闭数据库相关的资源
      * @param rs

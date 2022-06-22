@@ -13,8 +13,9 @@ public class admin {
         return uname;
     }
 
-    public void setUname(String uname) {
+    public String setUname(String uname) {
         this.uname = uname;
+        return uname;
     }
 
     public String getUpwd() {
